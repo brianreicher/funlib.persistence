@@ -141,16 +141,16 @@ class MongoDbGraphProvider(SharedGraphProvider):
             self.__disconnect()
             raise e
 
-    def __del__(self):
+    def __del__(self) -> None:
         self.__disconnect()
 
     def read_nodes(
         self,
         roi: Roi,
-        attr_filter: Optional[dict[str, Any]] = None,
-        read_attrs: Optional[list[str]] = None,
+        attr_filter: Optional[dict] = None,
+        read_attrs: Optional[list] = None,
         join_collection: Optional[str] = None,
-    ) -> list[dict[str, Any]]:
+    ) -> list:
         """Return a list of nodes within roi.
         Arguments:
 
@@ -294,10 +294,10 @@ class MongoDbGraphProvider(SharedGraphProvider):
     def read_edges(
         self,
         roi: Roi,
-        nodes: Optional[list[dict[str, Any]]] = None,
-        attr_filter: Optional[dict[str, Any]] = None,
-        read_attrs: Optional[list[str]] = None,
-    ) -> list[dict[int, Any]]:
+        nodes: Optional[list] = None,
+        attr_filter: Optional[dict] = None,
+        read_attrs: Optional[list] = None,
+    ) -> list:
         """Returns a list of edges within roi.
         Arguments:
 
@@ -386,10 +386,10 @@ class MongoDbGraphProvider(SharedGraphProvider):
     def get_graph(
         self,
         roi: Roi,
-        nodes_filter: Optional[dict[str, Any]] = None,
-        edges_filter: Optional[dict[str, Any]] = None,
-        node_attrs: Optional[list[str]] = None,
-        edge_attrs: Optional[list[str]] = None,
+        nodes_filter: Optional[dict] = None,
+        edges_filter: Optional[dict] = None,
+        node_attrs: Optional[list] = None,
+        edge_attrs: Optional[list] = None,
         join_collection: Optional[str] = None,
     ):
         """Return a graph within roi, optionally filtering by
